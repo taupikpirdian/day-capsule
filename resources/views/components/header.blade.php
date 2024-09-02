@@ -49,10 +49,6 @@
               </div>
             </div>
             <ul class="profile-dropdown onhover-show-div">
-              <li><a href="{{ url('/profile') }}"><i data-feather="user"></i><span>Account </span></a></li>
-              @if (Auth::user()->hasRole('admin'))
-                <li><a href="{{ url('/saldo') }}"><i data-feather="archive"></i><span>Saldo </span></a></li>
-              @endif
               <li><a href="{{ url('/logout') }}"><i data-feather="log-in"> </i><span>Log out</span></a></li>
             </ul>
           </li>

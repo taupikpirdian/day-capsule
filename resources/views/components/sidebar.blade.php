@@ -1,6 +1,6 @@
 <div class="sidebar-wrapper" data-layout="stroke-svg">
     <div>
-      <div class="logo-wrapper"><a href="{{url('/dashboard')}}"><img style="width: 30%" class="img-fluid" src="{{asset('assets/images/landing/harimau.png')}}" alt=""></a>
+      <div class="logo-wrapper"><a href="{{url('/')}}"><img class="img-fluid" src="{{asset('assets/images/logo/logo.png')}}" alt=""></a>
         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
         <div class="toggle-sidebar">
           <svg class="stroke-icon sidebar-toggle status_toggle middle">
@@ -11,7 +11,7 @@
           </svg>
         </div>
       </div>
-      <div class="logo-icon-wrapper"><a href="{{url('/dashboard')}}"><img class="img-fluid" src="{{asset('assets/images/logo/logo-icon.png')}}" alt=""></a></div>
+      <div class="logo-icon-wrapper"><a href="{{url('/')}}"><img class="img-fluid" src="{{asset('assets/images/logo/logo-icon.png')}}" alt=""></a></div>
       <nav class="sidebar-main">
         <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
         <div id="sidebar-menu">
@@ -49,82 +49,18 @@
                   <span>User</span></a>
               </li>
             @endif
-            @if(auth()->user()->hasAnyPermission([PERMISSION_LIST_LAPDU, PERMISSION_LIST_PENYELIDIKAN, PERMISSION_LIST_PENYIDIKAN, PERMISSION_LIST_TUNTUTAN, PERMISSION_LIST_EKSEKUSI]))
+            @if(auth()->user()->hasAnyPermission([PERMISSION_LIST_ACTIVITY]))
               <li class="sidebar-main-title">
                 <div>
                   <h6 class="lan-8">Applications</h6>
                 </div>
               </li>
-              @if(auth()->user()->can(PERMISSION_LIST_LAPDU))
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="{{url('lapdu')}}">
+              @if(auth()->user()->can(PERMISSION_LIST_ACTIVITY))
+                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="{{url('activity')}}">
                     <svg class="stroke-icon">
                       <use href="{{asset('assets/svg/icon-sprite.svg#stroke-to-do')}}"></use>
                     </svg>
-                    <span>Data Lapdu</span></a>
-                </li>
-              @endif
-              @if(auth()->user()->hasAnyPermission([PERMISSION_LIST_PENYELIDIKAN, PERMISSION_LIST_PENYIDIKAN]))
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                    <svg class="stroke-icon">
-                      <use href="{{asset('assets/svg/icon-sprite.svg#stroke-to-do')}}"></use>
-                    </svg>
-                    <span>Input Data Perkara</span></a>
-                  <ul class="sidebar-submenu">
-                    @if(auth()->user()->can(PERMISSION_LIST_PENYELIDIKAN))
-                      <li><a href="{{ url('penyelidikan/create') }}">Penyelidikan</a></li>
-                    @endif
-                    @if(auth()->user()->can(PERMISSION_LIST_PENYIDIKAN))
-                      <li><a href="{{ url('penyidikan/create') }}">Penyidikan</a></li>
-                    @endif
-                  </ul>
-                </li>
-              @endif
-              @if(auth()->user()->hasAnyPermission([PERMISSION_LIST_LAPDU, PERMISSION_LIST_PENYELIDIKAN, PERMISSION_LIST_PENYIDIKAN, PERMISSION_LIST_TUNTUTAN, PERMISSION_LIST_EKSEKUSI]))
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                  <svg class="stroke-icon">
-                    <use href="{{asset('assets/svg/icon-sprite.svg#stroke-file')}}"></use>
-                  </svg>
-                  <span>Data Perkara</span></a>
-                  <ul class="sidebar-submenu">
-                    @if(auth()->user()->can(PERMISSION_LIST_LAPDU))
-                      <li><a href="{{ url('lapdu') }}">Lapdu</a></li>
-                    @endif
-                    @if(auth()->user()->can(PERMISSION_LIST_PENYELIDIKAN))
-                      <li><a href="{{ url('penyelidikan') }}">Penyelidikan</a></li>
-                    @endif
-                    @if(auth()->user()->can(PERMISSION_LIST_PENYIDIKAN))
-                      <li><a href="{{ url('penyidikan') }}">Penyidikan</a></li>
-                    @endif
-                    @if(auth()->user()->can(PERMISSION_LIST_TUNTUTAN))
-                      <li><a href="{{ url('penuntutan') }}">Tuntutan</a></li>
-                    @endif
-                    @if(auth()->user()->can(PERMISSION_LIST_EKSEKUSI))
-                      <li><a href="{{ url('eksekusi') }}">Eksekusi</a></li>
-                    @endif
-                  </ul>
-                </li>
-              @endif
-            @endif
-            @if(auth()->user()->hasAnyPermission([PERMISSION_REPORT, PERMISSION_MONEV]))
-              <li class="sidebar-main-title">
-                <div>
-                  <h6>Report</h6>
-                </div>
-              </li>
-              @if(auth()->user()->can(PERMISSION_REPORT))
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="{{ url('report') }}">
-                  <svg class="stroke-icon">
-                    <use href="{{asset('assets/svg/icon-sprite.svg#stroke-charts')}}"></use>
-                  </svg>
-                  <span>Laporan Rekapitulasi</span></a>
-                </li>
-              @endif
-              @if(auth()->user()->can(PERMISSION_MONEV))
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="{{ url('monev') }}">
-                  <svg class="stroke-icon">
-                    <use href="{{asset('assets/svg/icon-sprite.svg#stroke-charts')}}"></use>
-                  </svg>
-                  <span>Monev</span></a>
+                    <span>Data Activity</span></a>
                 </li>
               @endif
             @endif

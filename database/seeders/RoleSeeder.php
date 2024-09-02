@@ -19,10 +19,7 @@ class RoleSeeder extends Seeder
 
         $datas = [
             [
-                "name" => 'kejari',
-            ],
-            [
-                "name" => 'kejati',
+                "name" => 'member',
             ]
         ];
         foreach ($datas as $data){

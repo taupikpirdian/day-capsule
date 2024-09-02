@@ -3,22 +3,13 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
-use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\admin\LapduController;
-use App\Http\Controllers\admin\MonevController;
-use App\Http\Controllers\admin\SaldoController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\admin\ReportController;
-use App\Http\Controllers\admin\EksekusiController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\PenuntutanController;
-use App\Http\Controllers\admin\PenyidikanController;
 use App\Http\Controllers\admin\PermissionController;
-use App\Http\Controllers\admin\PenyelidikanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +23,6 @@ use App\Http\Controllers\admin\PenyelidikanController;
 */
 Auth::routes();
 
-Route::controller(LandingController::class)
-        ->group(function() {
-            Route::get('/', 'index')->name('landing');
-        });
-
 Route::group(['middleware' => ['auth']], function() {
     Route::controller(LogoutController::class)
         ->group(function() {
@@ -46,8 +32,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::controller(DashboardController::class)
         ->group(function() {
             Route::group(['middleware' => ['auth']], function() {
-                Route::get('/dashboard','index');
-                Route::post('/dashboard-overview','overview')->name('dashboard.overview');
+                Route::get('/','index');
             });
         });
 
@@ -58,7 +43,7 @@ Route::group(['middleware' => ['auth']], function() {
             });
         });
 
-    Route::group(['middleware' => ['roleCheck:admin,kejari,kejati']], function() {
+    Route::group(['middleware' => ['roleCheck:admin']], function() {
         /**
          * role
          */
@@ -69,56 +54,9 @@ Route::group(['middleware' => ['auth']], function() {
         Route::resource('users', UserController::class);
         Route::post('users/datatable', [UserController::class, 'datatable'])->name('users.datatable');
         /**
-         * profile
+         * activity
          */
-        Route::get('profile', [UserController::class, 'profile'])->name('users.profile.index');
-        Route::post('profile/{id}', [UserController::class, 'profileUpdate'])->name('users.profile');
-        /**
-         * lapdu
-         */
-        Route::resource('lapdu', LapduController::class);
-        Route::post('lapdu/datatable', [LapduController::class, 'datatable'])->name('lapdu.datatable');
-        Route::post('lapdu/update-status/{id}', [LapduController::class, 'updateStatus'])->name('lapdu.update-status');
-        /**
-         * saldo
-         */
-        Route::get('saldo', [SaldoController::class, 'index'])->name('saldo.index');
-        Route::post('saldo/update', [SaldoController::class, 'update'])->name('saldo.update');
-
-        /**
-          * penyelidikan
-          */
-        Route::resource('penyelidikan', PenyelidikanController::class);
-        Route::post('penyelidikan/datatable', [PenyelidikanController::class, 'datatable'])->name('penyelidikan.datatable');
-
-        /**
-         * penyidikan
-         */
-        Route::resource('penyidikan', PenyidikanController::class);
-        Route::post('penyidikan/datatable', [PenyidikanController::class, 'datatable'])->name('penyidikan.datatable');
-
-        /**
-         * penuntutan
-         */
-        Route::resource('penuntutan', PenuntutanController::class);
-        Route::post('penuntutan/datatable', [PenuntutanController::class, 'datatable'])->name('penuntutan.datatable');
-
-        /**
-         * eksekusi
-         */
-        Route::resource('eksekusi', EksekusiController::class);
-        Route::post('eksekusi/datatable', [EksekusiController::class, 'datatable'])->name('eksekusi.datatable');
-
-        /**
-         * report
-         */
-        Route::get('report', [ReportController::class, 'index']);
-
-        /**
-         * monev
-         */
-        Route::get('monev', [MonevController::class, 'index']);
-        Route::get('monev-export', [MonevController::class, 'export'])->name('monev.export');
+        Route::resource('activity', ActivityController::class);
     });
 });
 

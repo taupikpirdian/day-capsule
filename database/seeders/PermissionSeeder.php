@@ -29,70 +29,16 @@ class PermissionSeeder extends Seeder
                 "name" => 'user-delete',
             ],
             [
-                "name" => 'lapdu-list',
+                "name" => 'activity-list',
             ],
             [
-                "name" => 'lapdu-create',
+                "name" => 'activity-create',
             ],
             [
-                "name" => 'lapdu-update',
+                "name" => 'activity-update',
             ],
             [
-                "name" => 'lapdu-delete',
-            ],
-            [
-                "name" => 'penyelidikan-list',
-            ],
-            [
-                "name" => 'penyelidikan-create',
-            ],
-            [
-                "name" => 'penyelidikan-update',
-            ],
-            [
-                "name" => 'penyelidikan-delete',
-            ],
-            [
-                "name" => 'penyidikan-list',
-            ],
-            [
-                "name" => 'penyidikan-create',
-            ],
-            [
-                "name" => 'penyidikan-update',
-            ],
-            [
-                "name" => 'penyidikan-delete',
-            ],
-            [
-                "name" => 'tuntutan-list',
-            ],
-            [
-                "name" => 'tuntutan-create',
-            ],
-            [
-                "name" => 'tuntutan-update',
-            ],
-            [
-                "name" => 'tuntutan-delete',
-            ],
-            [
-                "name" => 'eksekusi-list',
-            ],
-            [
-                "name" => 'eksekusi-create',
-            ],
-            [
-                "name" => 'eksekusi-update',
-            ],
-            [
-                "name" => 'eksekusi-delete',
-            ],
-            [
-                "name" => 'report-list',
-            ],
-            [
-                "name" => 'monev-list',
+                "name" => 'activity-delete',
             ]
         ];
         foreach ($datas as $data){

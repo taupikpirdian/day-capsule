@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Login | Sirimau</title>
+    <title>Login | Day Capsule</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -44,13 +44,13 @@
     </style>
   </head>
   <body>
-    <!-- login page start-->
-    <div class="container-fluid p-0">
-      <div class="row m-0">
-        <div class="col-12 p-0">    
-          <div class="login-card login-dark" style="background-image: url({{ asset('assets/images/bg/bg-login.png') }}); background-position: bottom;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-7"><img class="bg-img-cover bg-center" src="../assets/images/login/2.jpg" alt="looginpage"></div>
+        <div class="col-xl-5 p-0">
+          <div class="login-card login-dark">
             <div>
-              <div><a class="logo" href="index.html"><img class="img-fluid for-light" src="{{ asset('assets/images/login/logo_sirimau.png') }}" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt="looginpage"></a></div>
+              <div><a class="logo text-start" href="index.html"><img class="img-fluid for-light" src="../assets/images/logo/logo.png" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt="looginpage"></a></div>
               <div class="login-main"> 
                 <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -67,17 +67,8 @@
                       <div class="show-hide"><span class="show"></span></div>
                     </div>
                   </div>
-                  <div class="form-group mb-0">
-                    <div class="text-end mt-3">
-                      <div class="row">
-                        <div class="col-6">
-                          <a href="/" class="btn btn-secondary btn-block w-100">Home</a>
-                        </div>
-                        <div class="col-6">
-                          <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="form-group mb-0 mt-4">
+                    <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
                   </div>
                 </form>
               </div>
