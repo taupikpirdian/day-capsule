@@ -22,6 +22,16 @@ class RolePermissionSeeder extends Seeder
         $roleAdmin = Role::where('name', ROLE_ADMIN)->first();
         $roleAdmin->syncPermissions($permissionsAll);
 
+        // Member
+        $permissionMember = [
+            'activity-list',
+            'activity-create',
+            'activity-update',
+            'activity-delete',
+        ];
+        $roleMember = Role::where('name', ROLE_MEMBER)->first();
+        $roleMember->syncPermissions($permissionMember);
+
         $this->command->info('Seeder roles seeder selesai ... ');
     }
 }

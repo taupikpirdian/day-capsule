@@ -53,10 +53,15 @@ Route::group(['middleware' => ['auth']], function() {
          */
         Route::resource('users', UserController::class);
         Route::post('users/datatable', [UserController::class, 'datatable'])->name('users.datatable');
+    });
+
+    Route::group(['middleware' => ['roleCheck:member,admin']], function() {
         /**
          * activity
          */
         Route::resource('activity', ActivityController::class);
+        Route::post('activity/datatable', [ActivityController::class, 'datatable'])->name('activity.datatable');
+        Route::post('activity/titles', [ActivityController::class, 'titles'])->name('activity.titles');
     });
 });
 

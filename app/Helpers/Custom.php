@@ -186,3 +186,45 @@ function nanRpStringToInt($currency){
     }
     return $currency;
 }
+
+if (!function_exists('convertToMinutes')) {
+    function convertToMinutes($timeString)
+    {
+        $hours = 0;
+        $minutes = 0;
+
+        // Regular expression to match hours and minutes
+        if (preg_match('/(\d+)h/', $timeString, $matches)) {
+            $hours = (int) $matches[1];
+        }
+
+        if (preg_match('/(\d+)m/', $timeString, $matches)) {
+            $minutes = (int) $matches[1];
+        }
+
+        // Convert hours to minutes and sum with minutes
+        return ($hours * 60) + $minutes;
+    }
+}
+
+if (!function_exists('dateToHuman')) {
+    function dateToHuman($date)
+    {
+        // Use Carbon for date manipulation
+        $carbonDate = \Carbon\Carbon::parse($date);
+
+        // Return a human-readable format like "2 days ago"
+        return $carbonDate->diffForHumans();
+    }
+}
+
+if (!function_exists('dateToHumanReadable')) {
+    function dateToHumanReadable($date)
+    {
+        // Use Carbon for date manipulation
+        $carbonDate = \Carbon\Carbon::parse($date);
+
+        // Return the date in "Day Name, Month Name Year" format
+        return $carbonDate->format('j F Y');
+    }
+}
